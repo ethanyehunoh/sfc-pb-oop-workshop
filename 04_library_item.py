@@ -88,3 +88,46 @@ Example:
    print(dvd.get_info())    # Prints DVD information
 
 """
+
+class LibraryItem:
+    def __init__ (self, title, publication_date, identifier):
+        self.title = title
+        self.publication_date = publication_date
+        self.identifier = identifier
+
+    def get_info(self):
+        return "'" + str(self.title) + "'" + "," + " " + "'" + str(self.publication_date) + "'" + "," + " " + "'" + str(self.identifier) + "'" 
+
+class DVD(LibraryItem):
+    def __init__(self, title, publication_date, identifier, duration_minutes, director):
+        super().__init__(title, publication_date, identifier)
+        self.duration_minutes = duration_minutes
+        self.director = director
+    def get_info(self):
+        return super().get_info() + ", '" + str(self.duration_minutes) + ", '" + str(self.director)
+
+class Book(LibraryItem):
+    def __init__(self, title, publication_date, identifier, author, pages):
+        super().__init__(title, publication_date, identifier)
+        self.author = author
+        self.pages = pages
+        
+    def get_info(self):
+        return super().get_info() + ", '" + str(self.author) + "', " + str(self.pages)
+
+class Magazine(LibraryItem):
+    def __init__(self, title, publication_date, identifier, issue_number, month):
+        super(). __init__(title, publication_date, identifier)
+        self.issue_number = issue_number
+        self.month = month
+
+    def get_info(self):
+        return super().get_info() + ", '" + str(self.issue_number) + ", '" + str(self.month)  
+
+book = Book("The Great Gatsby", "1925", "B001", "F. Scott Fitzgerald", 218)
+magazine = Magazine("National Geographic", "2021", "M001", 12, "December")
+dvd = DVD("Inception", "2010", "D001", 148, "Christopher Nolan")
+
+print(book.get_info())         # Prints book information
+print(magazine.get_info())     # Prints magazine information
+print(dvd.get_info())          # Prints DVD information
